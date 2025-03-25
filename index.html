@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Gibbor International Family Church</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #4a4e69 0%, #22223b 100%);
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            color: rgba(255,255,255,0.75);
+        }
+
+        .verse {
+            background-color: rgba(255,255,255,0.05);
+            border-left: 4px solid rgba(255,255,255,0.5);
+            padding: 1.5rem;
+            max-width: 700px;
+            margin-top: 2rem;
+            font-style: italic;
+            text-align: left;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .verse-ref {
+            display: block;
+            text-align: right;
+            margin-top: 0.5rem;
+            opacity: 0.6;
+        }
+
+        .coming-soon {
+            background-color: rgba(255,255,255,0.1);
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.7);
+        }
+
+        #randomize-btn {
+            background-color: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            border: none;
+            padding: 0.5rem 1rem;
+            margin-top: 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        #randomize-btn:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="coming-soon">
+            Coming Soon
+        </div>
+        <h1 class="logo">El Gibbor International Family Church</h1>
+        <p class="subtitle">
+            We are preparing something extraordinary. Our digital presence is being crafted with purpose, passion, and divine inspiration.
+        </p>
+        <div class="verse" id="bible-verse">
+            "Now to him who is able to do immeasurably more than all we ask or imagine, according to his power that is at work within us, to him be glory in the church and in Christ Jesus throughout all generations, for ever and ever!"
+            <span class="verse-ref">— Ephesians 3:20-21</span>
+        </div>
+        <button id="randomize-btn">Get Random Verse</button>
+    </div>
+
+    <script>
+        // Array of Bible verses (you can expand this list)
+        const bibleVerses = [
+            {
+                text: "Now to him who is able to do immeasurably more than all we ask or imagine, according to his power that is at work within us, to him be glory in the church and in Christ Jesus throughout all generations, for ever and ever!",
+                reference: "— Ephesians 3:20-21"
+            },
+            {
+                text: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.",
+                reference: "— Jeremiah 29:11"
+            },
+            {
+                text: "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.",
+                reference: "— Proverbs 3:5-6"
+            },
+            {
+                text: "Therefore, if anyone is in Christ, the new creation has come: The old has gone, the new is here!",
+                reference: "— 2 Corinthians 5:17"
+            },
+            {
+                text: "But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.",
+                reference: "— Isaiah 40:31"
+            }
+        ];
+
+        // Get DOM elements
+        const verseElement = document.getElementById('bible-verse');
+        const randomizeBtn = document.getElementById('randomize-btn');
+
+        // Function to get a random verse
+        function getRandomVerse() {
+            const randomIndex = Math.floor(Math.random() * bibleVerses.length);
+            const selectedVerse = bibleVerses[randomIndex];
+            
+            verseElement.innerHTML = `
+                ${selectedVerse.text}
+                <span class="verse-ref">${selectedVerse.reference}</span>
+            `;
+        }
+
+        // Add event listener to the button
+        randomizeBtn.addEventListener('click', getRandomVerse);
+    </script>
+</body>
+</html>
