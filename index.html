@@ -74,21 +74,6 @@
             font-weight: 600;
             color: rgba(255,255,255,0.7);
         }
-
-        #randomize-btn {
-            background-color: rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.7);
-            border: none;
-            padding: 0.5rem 1rem;
-            margin-top: 1rem;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-
-        #randomize-btn:hover {
-            background-color: rgba(255,255,255,0.2);
-        }
     </style>
 </head>
 <body>
@@ -104,11 +89,10 @@
             "Now to him who is able to do immeasurably more than all we ask or imagine, according to his power that is at work within us, to him be glory in the church and in Christ Jesus throughout all generations, for ever and ever!"
             <span class="verse-ref">— Ephesians 3:20-21</span>
         </div>
-        <button id="randomize-btn">Get Random Verse</button>
     </div>
 
     <script>
-        // Array of Bible verses (you can expand this list)
+        // Array of Bible verses
         const bibleVerses = [
             {
                 text: "Now to him who is able to do immeasurably more than all we ask or imagine, according to his power that is at work within us, to him be glory in the church and in Christ Jesus throughout all generations, for ever and ever!",
@@ -132,23 +116,19 @@
             }
         ];
 
-        // Get DOM elements
-        const verseElement = document.getElementById('bible-verse');
-        const randomizeBtn = document.getElementById('randomize-btn');
-
         // Function to get a random verse
         function getRandomVerse() {
             const randomIndex = Math.floor(Math.random() * bibleVerses.length);
             const selectedVerse = bibleVerses[randomIndex];
             
-            verseElement.innerHTML = `
+            document.getElementById('bible-verse').innerHTML = `
                 ${selectedVerse.text}
                 <span class="verse-ref">${selectedVerse.reference}</span>
             `;
         }
 
-        // Add event listener to the button
-        randomizeBtn.addEventListener('click', getRandomVerse);
+        // Run on page load
+        window.onload = getRandomVerse;
     </script>
 </body>
 </html>
